@@ -1,0 +1,14 @@
+# JS section
+# Make """ for multiple lines of code
+'.source.js':
+  'Snippet Name':
+    'prefix': 'function'
+    'body': """function $1{} () {
+      $2{}
+    }"""
+
+# HTML
+'.text.html':
+  'Snippet Name':
+    'prefix': 'hello'
+    'body': 'Hello World!'
