@@ -1,14 +1,99 @@
-# JS section
-# Make """ for multiple lines of code
+#Javascript
 '.source.js':
-  'Snippet Name':
+  'generic function':
     'prefix': 'function'
-    'body': """function $1{} () {
-      $2{}
+    'body': """function $1 ($2) {
+      $3 $0
     }"""
+  'AJAX':
+    'prefix': '$.ajax'
+    'body': """
+    $.ajax({
+      type: 'POST',
+      data: { "$1": $2 },
+      dataType: 'json',
+      url: '<?php echo CController::createURL("$3"); ?>',
+      success: function (data) {
+        if (data.result == 'success') {
+          $4
+        }
+        else {
+          alert('Failed - ' + data.message);
+        }
+      },
+      error: function () {
+        alert('Failed to Delete item - unexpected error');
+      }
+    });
+    """
+  'Datatable':
+    'prefix': 'dataTable()'
+    'body': """
+      $('#$1').DataTable({
+        "order" : [[$2, "desc"]],
+      });
+    """
 
-# HTML
+#HTML
 '.text.html':
-  'Snippet Name':
-    'prefix': 'hello'
-    'body': 'Hello World!'
+  'Table':
+    'prefix': '<table>'
+    'body': """
+    <div class="table-responsive">
+      <table id="$1" class="table-striped m-b-none" width="100%" cellspacing="0">
+        <thead>
+          $3
+        </thead>
+        <tfoot>
+          $4
+        </tfoot>
+        <tbody>
+          $5
+        </tbody>
+      </table>
+    </div>
+    """
+  'Input':
+    'prefix':'<input'
+    'body':"""
+      <input type="text" class="form-control" id="$1" name="$2" />
+    """
+  'addon':
+    'prefix': '<addon-input'
+    'body':"""
+      <label>$1</label>
+      <div class="input-group">
+        <span class="input-group-addon">$2</span>
+        <input type="text" id="$3" name="$4" value="$5" class="form-control" placeholder=""/>
+      </div>
+    """
+  'col':
+    'prefix':'<col'
+    'body':"""
+      <div class="col-sm-$1">
+        $2
+      </div>
+    """
+  'List':
+    'prefix': '<ul'
+    'body': """
+      <ul>
+        $1
+      </ul>
+    """
+  'List Item':
+    'prefix': '<li'
+    'body':"""
+      <li>
+        $1
+      </li>
+    """
+# PHP
+'.php':
+  'foreach':
+    'prefix': 'forea'
+    'body': """
+    foreach ($1 as $2) {
+      $3;
+    }
+    """
