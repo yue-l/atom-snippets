@@ -59,13 +59,28 @@
       <input type="text" class="form-control" id="$1" name="$2" />
     """
   'addon':
-    'prefix': '<addon-input'
+    'prefix':'<addon'
+    'body':"""
+      <span class="input-group-addon">$1</span>
+    """
+  'input-group':
+    'prefix': '<input-group'
     'body':"""
       <label>$1</label>
       <div class="input-group">
         <span class="input-group-addon">$2</span>
         <input type="text" id="$3" name="$4" value="$5" class="form-control" placeholder=""/>
       </div>
+    """
+  'label':
+    'prefix':'<label'
+    'body':"""
+      <span class="label label-$1">$2</span>
+    """
+  'button':
+    'prefix':'<button'
+    'body':"""
+      <button class="btn btn-$1">$2</button>
     """
   'col':
     'prefix':'<col'
@@ -87,6 +102,15 @@
       <li>
         $1
       </li>
+    """
+  'Panel':
+    'prefix':'panel'
+    'body':"""
+      <div class="panel panel-$1">
+        <div class="panel-heading">$2</div>
+        <div class="panel-body">$3</div>
+        <div class="panel-footer">$4</div>
+      </div>
     """
 # PHP
 '.php':
