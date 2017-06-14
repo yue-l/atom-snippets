@@ -37,18 +37,13 @@
 #HTML
 '.text.html':
   'Table':
-    'prefix': '<table>'
+    'prefix': '<table'
     'body': """
     <div class="table-responsive">
-      <table id="$1" class="table-striped m-b-none" width="100%" cellspacing="0">
+      <table id="$1" class="display table-striped table-bordered" style="width:100%" >
         <thead>
-          $3
         </thead>
-        <tfoot>
-          $4
-        </tfoot>
         <tbody>
-          $5
         </tbody>
       </table>
     </div>
@@ -104,12 +99,80 @@
       </li>
     """
   'Panel':
-    'prefix':'panel'
+    'prefix':'<panel'
     'body':"""
       <div class="panel panel-$1">
         <div class="panel-heading">$2</div>
         <div class="panel-body">$3</div>
         <div class="panel-footer">$4</div>
+      </div>
+    """
+  'TR':
+    'prefix':'<tr'
+    'body':"""
+      <tr>
+        $1
+      </tr>
+    """
+  'TD':
+    'prefix':'<td'
+    'body':"""
+      <td>$1</td>
+    """
+  'TH':
+    'prefix':'<th'
+    'body':"""
+      <th>$1</th>
+    """
+  'THead':
+    'prefix':'<thead'
+    'body':"""
+      <thead>
+        $1
+      </thead>
+    """
+  'TBody':
+    'prefix':'<tbody'
+    'body':"""
+      <tbody>
+        $1
+      </tbody>
+    """
+  'Button Group':
+    'prefix':'<btn-group'
+    'body':"""
+      <div class="btn-group">
+        $1
+      </div>
+    """
+  'List Group':
+    'prefix':'<list-group'
+    'body':"""
+      <ul class="list-group">
+        <li class="list-group-item">$1</li>
+      </ul>
+    """
+  'Alert Panel':
+    'prefix':'<alert'
+    'body':"""
+      <div class="alert alert-$1" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        $2
+      </div>
+    """
+  'Nav Tabs':
+    'prefix':'<nav-tabs'
+    'body':"""
+      <ul class='nav nav-tabs'>
+        <li class="active"><a data-toggle="tab" href="#$1">$2</a></li>
+        <li><a data-toggle="tab" href="#$3">$4</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="$5" class="tab-pane fade in active">
+        $6
+        </div>
       </div>
     """
 # PHP
@@ -121,3 +184,28 @@
       $3;
     }
     """
+  'hasflash':
+    'prefix': 'hasflash'
+    'body': """
+      <?php if (Yii::$app->session->hasFlash('$1')): ?>
+        $2
+      <?php else: ?>
+        $3
+      <?php endif; ?>
+    """
+  'setflash':
+    'prefix': 'setflash'
+    'body': """
+      Yii::$app->session->setFlash('$1');
+    """
+  'anchor':
+    'prefix':'Html::a'
+    'body': """
+    Html::a('$1',[$2],['class' => "btn btn-$3 btn-$4"])$5;
+    """
+  'encode':
+    'prefix':'Html::en'
+    'body': """
+    Html::encode($1)$2;
+    """
+
